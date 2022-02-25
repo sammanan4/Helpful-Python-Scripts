@@ -3,6 +3,10 @@ convert an infix mathematical expression to postfix expression and evaluate the 
 """
 
 def infix_to_postfix(expr: str) -> list:
+    """
+    take an input string containing an infix expression and convert it to postfix
+    returns a list
+    """
     prec = {"+":0,"-":0,"*":1,"/":1,"(":2 }
     operations = tuple("()+-/*")
     numbers = tuple("0123456789.")
@@ -52,11 +56,18 @@ def infix_to_postfix(expr: str) -> list:
     return postfix_stack
 
 def find_first_operator(expr: list) -> int:
+    """
+    find the first operator encountered in the postfix expression list and return its index 
+    """
     for i, v in enumerate(expr):
         if v in "+-/*":
             return i 
 
 def evaluate_postfix_expression(expr: list) -> float:
+    """
+    evaluate a postfix expression returned by "infix_to_postfix" function in the form of a list
+    returns a floating point number
+    """
     while len(expr) > 1:
         operator_index = find_first_operator(expr)
         if operator_index:
