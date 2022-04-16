@@ -29,20 +29,51 @@ Sample Output:
 Case #1: 1 1 2
 Case #2: 1 1 2 2 2 3
 
+Question link: https://codingcompetitions.withgoogle.com/kickstart/round/00000000008f4332/0000000000941e56#problem
 
-Status: TLE
 '''
 
-t = int(input())
-for j in range(1, t+1):
-    _ = input()
-    n = list(map(int, input().split(" ")))
-    total = 1
-    d = {n[0]: 1}
-    print(f"Case #{j}: {total}", end=" ")
-    for k in n[1:]:
-        d[k] = d.get(k, 0) + 1
-        if k > total and sum([v for g,v in d.items() if g > total]) > total:
-            total+=1
-        print(f"{total}", end=" ")
-    print("")
+def dict_approach():
+    '''
+    status: TLE
+    '''
+    t = int(input())
+    for j in range(1, t+1):
+        _ = input()
+        n = list(map(int, input().split(" ")))
+        total = 0
+        d = {}
+        out = []
+        for k in n:
+            if k>total:
+                d[k] = d.get(k, 0) + 1
+                if sum(d.values()) > total:
+                    total+=1
+                    # this operation maybe too expensive
+                    for key in [l for l in d.keys() if l<=total]:
+                        del d[key]
+                out.append(total)
+        print(f"Case #{j}: {' '.join(out)}")
+
+        
+def min_heap_approach():
+    '''
+    status: pass
+    '''
+    import heapq
+    t = int(input())
+    for j in range(1, t+1):
+        _ = input()
+        n = list(map(int, input().split(" ")))
+        total = 0
+        inp = []
+        out = []
+        for k in n:
+            if k>total:
+                heapq.heappush(inp, k)
+                if len(inp) > total:
+                    total+=1
+                    while inp and inp[0] <= total:
+                        heapq.heappop(inp)
+            out.append(total)
+        print(f"Case #{j}: {' '.join(map(str, out))}")
