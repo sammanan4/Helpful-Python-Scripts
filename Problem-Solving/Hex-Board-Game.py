@@ -46,6 +46,48 @@ It can be
 or "Nobody wins" (excluding the quotes). 
 Note that the judge is case-sensitive, so answers of "impossible", "blue wins", "red wins", and "nobody wins" will be judged incorrect.
 
+Sample Input:
+7
+1
+.
+1
+B
+1
+R
+2
+BR
+BB
+4
+BBBB
+BBB.
+RRR.
+RRRR
+4
+BBBB
+BBBB
+RRR.
+RRRR
+6
+......
+..R...
+BBBBBB
+..R.R.
+..RR..
+......
+
+Sample Output:
+Case #1: Nobody wins
+Case #2: Blue wins
+Case #3: Red wins
+Case #4: Impossible
+Case #5: Blue wins
+Case #6: Impossible
+Case #7: Blue wins
+
+
+
+
+
 Status: Error
 This case considered as nobody wins but seems like impossible since red has 2 moves and blue has none
 2
