@@ -19,7 +19,7 @@ def send_mail(sender, receiver, subject, body):
   
     with smtplib.SMTP(MAILER_URL, 25) as server:
         #server.login(SMTP_LOGIN_USER, SMTP_LOGIN_PASSWORD)
-        server.sendmail(sender, receiver, msg.as_string())\
+        server.sendmail(sender, receiver, msg.as_string())
 
 if __name__ == "__main__":
     send_mail(
